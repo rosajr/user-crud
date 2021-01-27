@@ -5,7 +5,9 @@ import com.rosajr.br.dto.UserDTO;
 import com.rosajr.br.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,5 +23,11 @@ public class UserController {
     @PostMapping
     public User register(@RequestBody UserDTO dto) {
         return userService.register(dto);
+    }
+
+    @ResponseStatus(code = HttpStatus.OK)
+    @PutMapping(value = "/{id}")
+    public User register(@RequestBody UserDTO dto, @PathVariable Long id) {
+        return userService.update(dto, id);
     }
 }

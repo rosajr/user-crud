@@ -5,4 +5,5 @@ import com.rosajr.br.dto.AddressDTO;
 
 public interface AddressService {
     Address register(AddressDTO addressDTO);
+    Address update(Address address, AddressDTO addressDTO);
 }
