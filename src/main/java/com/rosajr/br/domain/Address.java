@@ -42,7 +42,7 @@ public class Address implements Serializable {
     private String street;
 
     @Column(name = "ADD_NUMBER")
-    private String number;
+    private Integer number;
 
     @Column(name = "ADD_NEIGHBORHOOD")
     private String neighborhood;
