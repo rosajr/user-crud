@@ -1,5 +1,6 @@
 package com.rosajr.br.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -42,9 +42,10 @@ public class User implements Serializable {
     private String cpf;
 
     @Column(name = "USR_PASSWORD")
+    @JsonIgnore
     private byte[] password;
 
-    @JoinColumn(name = "USR_ADD_ID",referencedColumnName = "ADD_ID")
+    @JoinColumn(name = "USR_ADD_ID", referencedColumnName = "ADD_ID")
     @OneToOne
     private Address address;
 
