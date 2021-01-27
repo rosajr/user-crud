@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
                 .cpf(dto.getCpf())
                 .email(dto.getEmail())
                 .phone(dto.getPhone())
+                .name(dto.getName())
                 .password(password).build();
 
         userRepository.save(user);
@@ -40,8 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(UserDTO dto, Long id) {
 
-        var user = userRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+        var user = findById(id);
 
         var address = addressService.update(user.getAddress(), dto.getAddress());
 
@@ -49,6 +51,7 @@ public class UserServiceImpl implements UserService {
         user.setCpf(dto.getCpf());
         user.setEmail(dto.getEmail());
         user.setPhone(dto.getPhone());
+        user.setName(dto.getName());
 
         if (dto.getPassword() != null)
             user.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()).getBytes());
@@ -56,5 +59,21 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
 
         return user;
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
     }
 }

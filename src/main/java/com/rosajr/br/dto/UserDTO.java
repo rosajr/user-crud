@@ -17,4 +17,5 @@ public class UserDTO {
     private String cpf;
     private String password;
     private AddressDTO address;
+    private String name;
 }

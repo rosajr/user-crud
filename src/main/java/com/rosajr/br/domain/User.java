@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,10 @@ public class User implements Serializable {
     private byte[] password;
 
     @JoinColumn(name = "USR_ADD_ID", referencedColumnName = "ADD_ID")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Address address;
+
+    @Column(name = "USR_NAME")
+    private String name;
 
 }
