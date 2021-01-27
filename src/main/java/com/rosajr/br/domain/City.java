@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TB_CITY")
+@Table(name = "tb_city")
 public class City implements Serializable {
     private static final long serialVersionUID = 1L;
 

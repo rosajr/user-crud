@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TB_COUNTRY")
+@Table(name = "tb_country")
 public class Country implements Serializable {
     private static final long serialVersionUID = 1L;
 

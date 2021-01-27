@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TB_STATE")
+@Table(name = "tb_state")
 public class State implements Serializable {
     private static final long serialVersionUID = 1L;
 
